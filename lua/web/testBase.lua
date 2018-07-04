@@ -12,6 +12,7 @@ if t then
     print("true")
 else
     print("false");
+
 end
 --[[\n不能在开始位置，lua会忽略]]
 print("test\n hello")
@@ -250,10 +251,10 @@ function string.split(input, delimiter)
 end
 
 for i, v in ipairs(lines) do
-    print(v)
+   -- print(v)
  local tmp=    string.split(v,"\t");
 
-    print(tmp[1].."##"..tmp[2])
+ ---   print(tmp[1].."##"..tmp[2])
 end
 
 myfile:close()
