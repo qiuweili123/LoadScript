@@ -9,6 +9,7 @@
 ---@class Person
 ---@field public age number
 ---@field weight number
+---
 local Person = {}
 
 function Person:sayHello()
