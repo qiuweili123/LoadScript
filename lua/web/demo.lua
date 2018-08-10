@@ -53,8 +53,8 @@ for k, emmy in pairs(dict) do
 end
 
 ---@type fun(name:string):Emmy
-local creatorFn
-local inst4 = creatorFn('inst4')
+--local creatorFn
+--local inst4 = creatorFn('inst4')
 -- type "inst4." here
 
 --------------------------------------------------------------------------------

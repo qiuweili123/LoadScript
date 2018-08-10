@@ -223,14 +223,14 @@ print("used time" .. e - s .. " seconds")
 -- 注意函数io.lines(filename)和file:lines()的使用有什么不同，实际上后者在函数调用完之后并不会自动关闭文件，代码最后myfie:close()函数的调用没有报错，也说明了这个问题。
 -- 直接全部迭代调用
 print("\nsecond file content is :")
-for cnt in io.lines("/Users/bitmain/IdeaProjects/privatespace/LoadScript/lua/web/file.txt") do
+for cnt in io.lines("E:/privatespace/LoadScript/lua/web/file.txt") do
    -- print(cnt)
 end
 
 -- 使用文件描述符迭代
 print("\nthird file content is :")
 local lines={};
-local myfile = io.open("/Users/bitmain/IdeaProjects/privatespace/LoadScript/lua/web/order/user_shopCart.txt");
+local myfile = io.open("E:/privatespace/LoadScript/lua/web/order/user_shopCart.txt");
 for line in myfile:lines() do
 
     lines[#lines+1]=line;
@@ -253,6 +253,8 @@ end
 for i, v in ipairs(lines) do
    -- print(v)
  local tmp=    string.split(v,"\t");
+
+    print("&name==\"" ..tmp[1].."\"")
 
  ---   print(tmp[1].."##"..tmp[2])
 end
