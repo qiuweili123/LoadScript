@@ -6,8 +6,6 @@
 
 wrk.method = "GET"
 
-
-
 ---  随机交换顺序
 function shuffle(paths)
     local j, k
@@ -33,10 +31,14 @@ end
 function string.split(input, delimiter)
     input = tostring(input)
     delimiter = tostring(delimiter)
-    if (delimiter=='') then return false end
-    local pos,arr = 0, {}
+    if (delimiter == '') then
+        return false
+    end
+    local pos, arr = 0, {}
     -- for each divider found
-    for st,sp in function() return string.find(input, delimiter, pos, true) end do
+    for st, sp in function()
+        return string.find(input, delimiter, pos, true)
+    end do
         table.insert(arr, string.sub(input, pos, st - 1))
         pos = sp + 1
     end
@@ -48,33 +50,29 @@ products = non_empty_lines_from("product.txt")
 
 length = #products
 
-counter=1
-
-
-
+counter = 1
 
 function response(status, headers, body)
- -- print(status..body)
+    -- print(status..body)
 end
 
 function request()
 
-    local product = string.split(products[counter],"\t");
+    local product = string.split(products[counter], "\t");
     counter = counter + 1
     if counter > length then
         counter = 1
     end
 
+    local path = wrk.path .. "?productId=" .. product[1] .. "&language=" .. tostring(product[2]);
+    --print("path: [" .. path .."]")
 
-   local path=wrk.path.."?productId=".. product[1] .."&language="..tostring(product[2]);
-   --print("path: [" .. path .."]")
-
- --   local body = '{"userId":"' .. path .. '","productId":"00020180508095447784qx6Aduql071E",  "count":1, "fittingIds":["00020180117170455462Vj8Xc1jb06A6","00020180117170455462Vj8Xc1jb06A6"]}'
+    --   local body = '{"userId":"' .. path .. '","productId":"00020180508095447784qx6Aduql071E",  "count":1, "fittingIds":["00020180117170455462Vj8Xc1jb06A6","00020180117170455462Vj8Xc1jb06A6"]}'
 
     --return wrk.format(wrk.method,wrk.path,wrk.headers,wrk.body)
     -- return wrk.format(wrk.method,path)
     --  print("path=="..wrk.path)
-   return wrk.format(nil,path,nil, nil)
+    return wrk.format(nil, path, nil, nil)
 end
 
 request();

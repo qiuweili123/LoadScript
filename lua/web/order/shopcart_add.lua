@@ -8,8 +8,6 @@
 wrk.method = "POST"
 wrk.headers["Content-Type"] = "application/json;charset=utf-8"
 
-
-
 ---  随机交换顺序
 function shuffle(paths)
     local j, k
@@ -36,10 +34,10 @@ paths = non_empty_lines_from("user.txt")
 
 length = #paths
 
-counter=1
+counter = 1
 
 function response(status, headers, body)
- ---   print(status..body)
+    ---   print(status..body)
 end
 
 function request()
@@ -56,7 +54,7 @@ function request()
 
     --return wrk.format(wrk.method,wrk.path,wrk.headers,wrk.body)
     -- return wrk.format(wrk.method,path)
-    return wrk.format(nil,nil,nil, body)
+    return wrk.format(nil, nil, nil, body)
 end
 
 

@@ -224,25 +224,29 @@ print("used time" .. e - s .. " seconds")
 -- 直接全部迭代调用
 print("\nsecond file content is :")
 for cnt in io.lines("E:/privatespace/LoadScript/lua/web/file.txt") do
-   -- print(cnt)
+    -- print(cnt)
 end
 
 -- 使用文件描述符迭代
 print("\nthird file content is :")
-local lines={};
+local lines = {};
 local myfile = io.open("E:/privatespace/LoadScript/lua/web/order/user_shopCart.txt");
 for line in myfile:lines() do
 
-    lines[#lines+1]=line;
+    lines[#lines + 1] = line;
 end
 
 function string.split(input, delimiter)
     input = tostring(input)
     delimiter = tostring(delimiter)
-    if (delimiter=='') then return false end
-    local pos,arr = 0, {}
+    if (delimiter == '') then
+        return false
+    end
+    local pos, arr = 0, {}
     -- for each divider found
-    for st,sp in function() return string.find(input, delimiter, pos, true) end do
+    for st, sp in function()
+        return string.find(input, delimiter, pos, true)
+    end do
         table.insert(arr, string.sub(input, pos, st - 1))
         pos = sp + 1
     end
@@ -251,12 +255,12 @@ function string.split(input, delimiter)
 end
 
 for i, v in ipairs(lines) do
-   -- print(v)
- local tmp=    string.split(v,"\t");
+    -- print(v)
+    local tmp = string.split(v, "\t");
 
-    print("&name==\"" ..tmp[1].."\"")
+    print("&name==\"" .. tmp[1] .. "\"")
 
- ---   print(tmp[1].."##"..tmp[2])
+    ---   print(tmp[1].."##"..tmp[2])
 end
 
 myfile:close()

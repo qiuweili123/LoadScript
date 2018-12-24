@@ -7,8 +7,6 @@
 
 wrk.method = "GET"
 
-
-
 ---  随机交换顺序
 function shuffle(paths)
     local j, k
@@ -35,12 +33,10 @@ orderIds = non_empty_lines_from("orderId.txt")
 
 length = #orderIds
 
-counter=1
-
-
+counter = 1
 
 function response(status, headers, body)
-  -- print(status..body)
+    -- print(status..body)
 end
 
 function request()
@@ -52,15 +48,15 @@ function request()
     end
 
     -- print("path: [" .. path .."]")
-    local path=wrk.path.."?subId=".. orderId
+    local path = wrk.path .. "?subId=" .. orderId
 
 
- --   local body = '{"userId":"' .. path .. '","productId":"00020180508095447784qx6Aduql071E",  "count":1, "fittingIds":["00020180117170455462Vj8Xc1jb06A6","00020180117170455462Vj8Xc1jb06A6"]}'
+    --   local body = '{"userId":"' .. path .. '","productId":"00020180508095447784qx6Aduql071E",  "count":1, "fittingIds":["00020180117170455462Vj8Xc1jb06A6","00020180117170455462Vj8Xc1jb06A6"]}'
 
     --return wrk.format(wrk.method,wrk.path,wrk.headers,wrk.body)
     -- return wrk.format(wrk.method,path)
     --  print("path=="..wrk.path)
-    return wrk.format(nil,path,nil, nil)
+    return wrk.format(nil, path, nil, nil)
 end
 
 

@@ -8,8 +8,6 @@
 wrk.method = "POST"
 wrk.headers["Content-Type"] = "application/json;charset=utf-8"
 
-
-
 ---  随机交换顺序
 function shuffle(paths)
     local j, k
@@ -39,10 +37,10 @@ productIds = non_empty_lines_from("order_submitBuyNow.txt")
 
 length = #productIds
 
-counter=1
+counter = 1
 
 function response(status, headers, body)
- ---   print(status..body)
+    ---   print(status..body)
 end
 
 --[[function done(summary, latency, requests)
@@ -60,12 +58,12 @@ function request()
 
     -- print("path: [" .. path .."]")
 
-   --    local body = '{"coupons": [],"shipCode": "003","userId":"'..productId..'","productId":"000201803161929057162OWValBS068D","addressId": " 00220171130132750215VGhPsroi06FD",  "productCount":1, "remark":"sdsdfffdsdsfd","imgCode":"108"}'
-    local body = '{"coupons": [],"shipCode": "003","userId":"bitmaintestsso47@bitmain.com","productId":"'..productId..'","addressId": " 00220171130132750215VGhPsroi06FD",  "productCount":1, "remark":"sdsdfffdsdsfd","imgCode":"108"}'
+    --    local body = '{"coupons": [],"shipCode": "003","userId":"'..productId..'","productId":"000201803161929057162OWValBS068D","addressId": " 00220171130132750215VGhPsroi06FD",  "productCount":1, "remark":"sdsdfffdsdsfd","imgCode":"108"}'
+    local body = '{"coupons": [],"shipCode": "003","userId":"bitmaintestsso47@bitmain.com","productId":"' .. productId .. '","addressId": " 00220171130132750215VGhPsroi06FD",  "productCount":1, "remark":"sdsdfffdsdsfd","imgCode":"108"}'
 
     --return wrk.format(wrk.method,wrk.path,wrk.headers,wrk.body)
     -- return wrk.format(wrk.method,path)
-    return wrk.format(nil,nil,nil, body)
+    return wrk.format(nil, nil, nil, body)
 end
 
 
