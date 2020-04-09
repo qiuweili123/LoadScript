@@ -7,11 +7,11 @@ local s = "hello"
 print(#s);
 
 --[[lua中的boolean值比较特殊,任何对象都能是boolean，如果为nil，返回false，其他均为true]]
-local t = "t";
-if t then
-    print("true")
+local t = nil;
+if not t then
+    print("obj is true")
 else
-    print("false");
+    print("obj is false");
 
 end
 --[[\n不能在开始位置，lua会忽略]]
@@ -219,6 +219,28 @@ local s = os.clock()
 local e = os.clock()
 print("used time" .. e - s .. " seconds")
 
+--字符串match
+local  match_str="\"\/api\/auth\/ssoEnableQuery\",\"\/api\/repository\/open\/*\"";
+local  match_ret= str.gmatch(match_str, "[a-zA-Z*/]+");
+
+print("match::",match_ret())
+
+while true do
+    local m, err = match_ret()
+
+    if err then
+        ngx.log(ngx.ERR, "error: ", err)
+        return
+    end
+    if not m then
+        -- no match found (any more)
+        break
+    end
+    print(" m::", m)
+    -- found a match
+
+end
+
 -- io测试
 -- 注意函数io.lines(filename)和file:lines()的使用有什么不同，实际上后者在函数调用完之后并不会自动关闭文件，代码最后myfie:close()函数的调用没有报错，也说明了这个问题。
 -- 直接全部迭代调用
@@ -232,7 +254,6 @@ print("\nthird file content is :")
 local lines = {};
 local myfile = io.open("E:/privatespace/LoadScript/lua/web/order/user_shopCart.txt");
 for line in myfile:lines() do
-
     lines[#lines + 1] = line;
 end
 
